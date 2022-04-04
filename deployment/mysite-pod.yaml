@@ -9,6 +9,14 @@ spec:
   - name: mysite
     image: ghcr.io/25542554/cis-92-devbox:main
     imagePullPolicy: Always
+    resources:
+      limits:
+        cpu: 256m 
+        memory: 250Mi
+    livenessProbe:
+      httpGet:
+        path: /polls/
+        port: 8000
     ports:
     - containerPort: 8000
     env:
